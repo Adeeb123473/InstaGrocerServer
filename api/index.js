@@ -58,7 +58,7 @@ const handler = serverless(app, { provider: 'azure' });
 app.use(async (req, res, next) => {
     if (!isDbConnected) {
         try {
-            await handler(connectToDatabase());
+            await connectToDatabase();
             isDbConnected = true;
             next();
         } catch (error) {
