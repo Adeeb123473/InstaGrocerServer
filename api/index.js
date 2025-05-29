@@ -54,11 +54,11 @@ app.use('/api/sale', saleRoute);
 
 // Connect to DB before handling requests
 let isDbConnected = false;
-
+const handler = serverless(app, { provider: 'azure' });
 app.use(async (req, res, next) => {
     if (!isDbConnected) {
         try {
-            await connectToDatabase();
+            await handler(connectToDatabase());
             isDbConnected = true;
             next();
         } catch (error) {
