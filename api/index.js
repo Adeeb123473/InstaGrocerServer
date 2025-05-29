@@ -70,4 +70,4 @@ app.use(async (req, res, next) => {
     }
 });
 
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
